@@ -20,7 +20,7 @@ services:
   frontend:
     image: efraimnabil/health-service_frontend
     ports:
-      - "5173:5173"
+      - "80:5173"
     networks:
       - service-health-network
     depends_on:
@@ -32,4 +32,3 @@ networks:
 
 volumes:
   simulator-logs:
-  
