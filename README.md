@@ -14,7 +14,7 @@
 
 3. Run the project using Docker Compose:
     ```bash
-    docker-compose up
+    docker compose up
     ```
 
 ## Notes
