@@ -1,0 +1,35 @@
+services:
+  simulator:
+    image: miinamagdy/simulator2:test
+    ports:
+      - "7000:7000"
+    networks:
+      - service-health-network
+    volumes:
+      - simulator-logs:/home
+  log-analyzer:
+    image: miinamagdy/log-analyzer2:test
+    ports:
+      - "8080:8080"
+    networks:
+      - service-health-network
+    depends_on:
+      - simulator
+    volumes:
+      - simulator-logs:/home
+  frontend:
+    image: efraimnabil/health-service_frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - service-health-network
+    depends_on:
+      - log-analyzer
+    
+networks:
+  service-health-network:
+    driver: bridge
+
+volumes:
+  simulator-logs:
+  
